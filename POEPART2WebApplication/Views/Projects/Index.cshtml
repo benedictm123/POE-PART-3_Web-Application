@@ -1,0 +1,112 @@
+﻿@model IEnumerable<POEPART2WebApplication.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+    }
+
+    .index-container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #00796b;
+        margin-bottom: 30px;
+    }
+
+    .create-link {
+        display: inline-block;
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: #00796b;
+        text-decoration: none;
+    }
+
+        .create-link:hover {
+            text-decoration: underline;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #00796b;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a.action-link {
+        color: #00796b;
+        text-decoration: none;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+        a.action-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="index-container">
+    <h1>Projects</h1>
+
+    <p>
+        <a asp-action="Create" class="create-link">+ Create New Project</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ProjectName)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Location)</th>
+                <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ProjectName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProjectID" class="action-link">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.ProjectID" class="action-link">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProjectID" class="action-link">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

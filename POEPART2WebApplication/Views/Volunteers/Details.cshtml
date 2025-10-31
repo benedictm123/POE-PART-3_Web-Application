@@ -1,0 +1,86 @@
+﻿@model POEPART2WebApplication.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+    }
+
+    .details-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #00796b;
+        margin-bottom: 10px;
+    }
+
+    h4 {
+        text-align: center;
+        font-weight: normal;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    dl.row {
+        margin-bottom: 25px;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .action-links a {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+            .action-links a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="details-container">
+    <h1>Volunteer Details</h1>
+    <h4>Information Overview</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.User)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Email)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Skills)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Skills)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Availability)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Availability)</dd>
+    </dl>
+
+    <div class="action-links">
+        <a asp-action="Edit" asp-route-id="@Model?.VolunteerID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

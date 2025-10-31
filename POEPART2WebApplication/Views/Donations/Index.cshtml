@@ -1,0 +1,108 @@
+﻿@model IEnumerable<POEPART2WebApplication.Models.Donation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+    }
+
+    .index-container {
+        max-width: 900px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #00796b;
+        margin-bottom: 25px;
+    }
+
+    .create-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #00796b;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        background: #e0f2f1;
+    }
+
+        .create-link:hover {
+            background: #b2dfdb;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background-color: #00796b;
+        color: #fff;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a.action-link {
+        margin-right: 10px;
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        a.action-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="index-container">
+    <h1>Donations</h1>
+
+    <a asp-action="Create" class="create-link">+ Create New Donation</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.Project)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.DonationDate)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Project.ProjectName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DonationDate)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.DonationID" class="action-link">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.DonationID" class="action-link">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.DonationID" class="action-link">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

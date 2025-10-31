@@ -1,0 +1,93 @@
+﻿@model POEPART2WebApplication.Models.Donation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+    }
+
+    .details-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1, h4 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: #00796b;
+    }
+
+    h4 {
+        color: #555;
+        font-weight: normal;
+    }
+
+    dl.row {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    dt {
+        font-weight: bold;
+        color: #00796b;
+    }
+
+    dd {
+        margin-left: 0;
+        padding-bottom: 10px;
+        color: #555;
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .action-links a {
+            color: #00796b;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+            .action-links a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="details-container">
+    <h1>Donation Details</h1>
+    <h4>Information</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.User)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Email)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Project)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Project.ProjectName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Amount)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Amount)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.DonationDate)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.DonationDate)</dd>
+    </dl>
+
+    <div class="action-links">
+        <a asp-action="Edit" asp-route-id="@Model?.DonationID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

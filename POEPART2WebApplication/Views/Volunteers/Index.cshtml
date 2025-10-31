@@ -1,0 +1,106 @@
+﻿@model IEnumerable<POEPART2WebApplication.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+    }
+
+    .index-container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #00796b;
+        margin-bottom: 20px;
+    }
+
+    .create-link {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 15px;
+        background-color: #00796b;
+        color: #fff;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .create-link:hover {
+            background-color: #004d40;
+        }
+
+    table.table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+        table.table th {
+            background-color: #e0f2f1;
+            text-align: left;
+            padding: 10px;
+            border-radius: 6px 6px 0 0;
+        }
+
+        table.table td {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+            vertical-align: middle;
+        }
+
+        table.table tr td a {
+            margin-right: 10px;
+            color: #00796b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            table.table tr td a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="index-container">
+    <h1>Volunteers</h1>
+
+    <a asp-action="Create" class="create-link">Create New Volunteer</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.Skills)</th>
+                <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Skills)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.VolunteerID">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.VolunteerID">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.VolunteerID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
